@@ -12,7 +12,7 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
   ],
-  base: '/vue-sneakers/',
+  base: process.env.NODE_ENV === 'production' ? '/vue-sneakers/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

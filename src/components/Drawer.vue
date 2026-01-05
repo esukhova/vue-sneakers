@@ -4,6 +4,7 @@ import CartItemList from './CartItemList.vue'
 import InfoBlock from './InfoBlock.vue'
 import {inject, computed, ref} from "vue";
 import axios from "axios";
+import {BASE_URL} from "@/config/constants";
 
 const props = defineProps({
   totalPrice: Number,
@@ -45,13 +46,13 @@ const createOrder = async () => {
         v-if="!totalPrice && !orderId"
         title="Корзина пустая"
         description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
-        image-url="/package-icon.png"
+        :image-url="`${BASE_URL}/package-icon.png`"
       />
       <InfoBlock
         v-if="orderId"
         title="Заказ оформлен!"
         :description="`Ваш заказ #${orderId} скоро будет передан курьерской доставке`"
-        image-url="/order-success-icon.png"
+        :image-url="`${BASE_URL}/order-success-icon.png`"
       />
     </div>
 
